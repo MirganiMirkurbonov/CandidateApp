@@ -1,3 +1,6 @@
 ﻿namespace Domain.Options;
 
-public record DatabaseOptions(string ConnectionString);
+public class DatabaseOptions
+{
+    public string ConnectionString { get; init; } = null!;
+}
