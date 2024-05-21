@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
-using Domain.Context.Base;
+using Persistence.Context.Base;
 
-namespace Domain.Context.Tables;
+namespace Persistence.Context.Tables;
 
 [Table("candidate")]
 public class Candidate : BaseEntity

@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
-using Domain.Enumerators;
+using Persistence.Enumerators;
 
-namespace Domain.Context.Base;
+namespace Persistence.Context.Base;
 
 public abstract class BaseEntity
 {

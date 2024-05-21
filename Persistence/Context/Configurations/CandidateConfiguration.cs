@@ -1,9 +1,9 @@
-﻿using Domain.Context.Tables;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using EntityState = Domain.Enumerators.EntityState;
+using Persistence.Context.Tables;
+using EntityState = Persistence.Enumerators.EntityState;
 
-namespace Domain.Context.Configurations;
+namespace Persistence.Context.Configurations;
 
 public class CandidateConfiguration : IEntityTypeConfiguration<Candidate>
 {

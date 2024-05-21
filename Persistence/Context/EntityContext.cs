@@ -1,9 +1,9 @@
 ﻿using System.Reflection;
-using Domain.Options;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Options;
+using Persistence.Options;
 
-namespace Domain.Context;
+namespace Persistence.Context;
 
 public partial class EntityContext(
     IOptions<DatabaseOptions> options,
@@ -11,7 +11,9 @@ public partial class EntityContext(
 {
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         => optionsBuilder.UseNpgsql(options.Value.ConnectionString,
-            builder => { builder.EnableRetryOnFailure(3, TimeSpan.FromSeconds(2), null);
+            builder =>
+            {
+                builder.EnableRetryOnFailure(3, TimeSpan.FromSeconds(2), null);
                 builder.CommandTimeout(200);
             });
 

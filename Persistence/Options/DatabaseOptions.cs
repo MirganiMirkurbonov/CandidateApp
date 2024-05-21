@@ -1,4 +1,4 @@
-﻿namespace Domain.Options;
+﻿namespace Persistence.Options;
 
 public class DatabaseOptions
 {
