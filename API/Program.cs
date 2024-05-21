@@ -1,9 +1,10 @@
-using Domain.Extensions;
+
+using Persistence.Extensions;
 
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services
-    .AddDomainLayer(builder.Configuration);
+    .AddPersistenceLayer(builder.Configuration);
 
 builder.Services.AddControllers();
 

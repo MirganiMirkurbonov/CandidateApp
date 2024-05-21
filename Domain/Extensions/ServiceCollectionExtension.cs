@@ -1,20 +1,18 @@
-﻿using Domain.Context;
-using Domain.Options;
-using Microsoft.Extensions.Configuration;
+﻿using Domain.Models.API.Request;
+using Domain.Validators;
+using FluentValidation;
+using FluentValidation.AspNetCore;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace Domain.Extensions;
 
 public static class ServiceCollectionExtension
 {
-    public static IServiceCollection AddDomainLayer(
-        this IServiceCollection serviceCollection,
-        IConfiguration configuration)
+    public static IServiceCollection AddDomainLayer(this IServiceCollection serviceCollection)
     {
         serviceCollection
-            .Configure<DatabaseOptions>(configuration.GetSection("DatabaseOptions"));
-
-        serviceCollection.AddDbContext<EntityContext>();
+            .AddScoped<IValidator<RegisterCandidateRequest>, RegisterCandidateRequestValidator>();
+        
         return serviceCollection;
     }
 }
