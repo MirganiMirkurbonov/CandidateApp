@@ -1,4 +1,5 @@
-﻿using Persistence.Context;
+﻿using System.Linq.Expressions;
+using Persistence.Context;
 using Persistence.Context.Base;
 using Microsoft.EntityFrameworkCore;
 using Persistence.Context.Tables;
@@ -43,5 +44,10 @@ public class Repository<T> : IRepository<T>
     {
         _dbSet.Remove(entity);
         _entityContext.SaveChanges();
+    }
+
+    public async Task<T?> FindAsync(Expression<Func<T, bool>> predicate, CancellationToken cancellationToken)
+    {
+        return await _dbSet.FirstOrDefaultAsync(predicate, cancellationToken);
     }
 }

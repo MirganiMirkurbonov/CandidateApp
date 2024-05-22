@@ -22,7 +22,7 @@ namespace Persistence.Migrations
 
             NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
 
-            modelBuilder.Entity("Persistence.Context.Tables.Candidate", b =>
+            modelBuilder.Entity("Persistence.Context.Tables.Candidates", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()

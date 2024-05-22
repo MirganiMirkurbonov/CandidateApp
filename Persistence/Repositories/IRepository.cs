@@ -1,4 +1,6 @@
-﻿namespace Persistence.Repositories;
+﻿using System.Linq.Expressions;
+
+namespace Persistence.Repositories;
 
 public interface IRepository<T>
 { 
@@ -7,4 +9,5 @@ public interface IRepository<T>
         Task AddAsync(T entity, CancellationToken cancellationToken);
         void Update(T entity);
         void Delete(T entity);
+        Task<T?> FindAsync(Expression<Func<T, bool>> predicate, CancellationToken cancellationToken);
 }

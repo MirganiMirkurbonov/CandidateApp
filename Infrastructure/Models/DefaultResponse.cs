@@ -30,4 +30,7 @@ public class DefaultResponse<T>
         Error = errorCodeEnum.Localize();
         Success = false;
     }
+    public static implicit operator DefaultResponse<T>(T result) => new(result);
+    public static implicit operator DefaultResponse<T>(ErrorCodeEnum error) => new(error);
+
 }
