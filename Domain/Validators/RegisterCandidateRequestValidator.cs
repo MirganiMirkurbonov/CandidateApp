@@ -1,5 +1,4 @@
 ﻿using Domain.Models.API.Request;
-using FluentValidation;
 
 namespace Domain.Validators;
 

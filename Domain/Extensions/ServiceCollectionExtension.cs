@@ -1,7 +1,6 @@
 ﻿using Domain.Models.API.Request;
 using Domain.Validators;
 using FluentValidation;
-using FluentValidation.AspNetCore;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace Domain.Extensions;

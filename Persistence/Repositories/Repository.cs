@@ -2,7 +2,6 @@
 using Persistence.Context;
 using Persistence.Context.Base;
 using Microsoft.EntityFrameworkCore;
-using Persistence.Context.Tables;
 
 namespace Persistence.Repositories;
 
