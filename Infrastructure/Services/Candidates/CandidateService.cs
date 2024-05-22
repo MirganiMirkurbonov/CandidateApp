@@ -22,7 +22,7 @@ internal class CandidateService(
         {
             return ErrorCodeEnum.InvalidInputParams;
         }
-        
+        // The email should be replaced by Id, It's wrong way to determine users
         var candidate = await repository.FindAsync(x => x.Email.ToLower() == request.Email.ToLower().Trim(), cancellationToken);
         if (candidate == null)
         {

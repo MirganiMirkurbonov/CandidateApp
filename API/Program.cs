@@ -10,7 +10,6 @@ builder.Services
     .AddDomainLayer()
     .AddInfrastructureLayer();
 
-
 builder.Services.AddControllers();
 
 builder.Services.AddEndpointsApiExplorer();
