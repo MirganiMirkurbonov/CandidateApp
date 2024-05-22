@@ -46,6 +46,7 @@ public partial class EntityContext(
             {
                 entry.Entity.Id = Guid.NewGuid();
                 entry.Entity.CreatedAt = DateTime.UtcNow;
+                entry.Entity.State = Enumerators.EntityState.Created;
             }
 
             entry.Entity.UpdatedDate = DateTime.UtcNow;
