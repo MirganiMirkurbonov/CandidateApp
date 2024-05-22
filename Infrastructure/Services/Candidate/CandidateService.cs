@@ -1,4 +1,5 @@
-﻿using Domain.Models.API.Request;
+﻿using Domain.Enumerators;
+using Domain.Models.API.Request;
 using FluentValidation;
 using Infrastructure.Models;
 using Persistence.Context;
@@ -11,12 +12,14 @@ internal class CandidateService(
     EntityContext entityContext,
     IRepository<Persistence.Context.Tables.Candidate> repository) : ICandidate
 {
-    public async Task<DefaultResponse<bool>> Register(RegisterCandidateRequest request)
+    public async Task<DefaultResponse<bool>> Register(
+        RegisterCandidateRequest request,
+        CancellationToken cancellationToken)
     {
-        var validationResult = await validator.ValidateAsync(request);
+        var validationResult = await validator.ValidateAsync(request, cancellationToken);
         if (!validationResult.IsValid)
         {
-            return new DefaultResponse<bool>(validationResult.Errors.First().ErrorMessage);
+            return new DefaultResponse<bool>(ErrorCodeEnum.InvalidInputParams);
         }
 
         var newCandidate = new Persistence.Context.Tables.Candidate
@@ -24,7 +27,6 @@ internal class CandidateService(
             FirstName = request.FirstName,
             LastName = request.LastName,
             Email = request.Email,
-            CreatedAt = DateTime.UtcNow,
             PhoneNumber = request.PhoneNumber,
             GithubProfileUrl = request.GithubProfileUrl,
             LinkedinProfileUrl = request.LinkedinProfileUrl,
@@ -32,7 +34,7 @@ internal class CandidateService(
             EndTimeInterval = request.EndTimeInterval,
             Comment = request.Comment
         };
-        await repository.AddAsync(newCandidate);
+        await repository.AddAsync(newCandidate, cancellationToken);
         
         return new DefaultResponse<bool>(true);
     }

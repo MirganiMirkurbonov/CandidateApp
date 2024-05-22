@@ -5,5 +5,5 @@ namespace Infrastructure.Services.Candidate;
 
 public interface ICandidate
 {
-    Task<DefaultResponse<bool>> Register(RegisterCandidateRequest request);
+    Task<DefaultResponse<bool>> Register(RegisterCandidateRequest request, CancellationToken cancellationToken);
 }

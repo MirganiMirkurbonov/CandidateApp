@@ -1,6 +1,7 @@
 ﻿using Persistence.Context;
 using Persistence.Context.Base;
 using Microsoft.EntityFrameworkCore;
+using Persistence.Context.Tables;
 
 namespace Persistence.Repositories;
 
@@ -16,20 +17,20 @@ public class Repository<T> : IRepository<T>
         _dbSet = _entityContext.Set<T>();
     }
 
-    public async Task<T?> GetByIdAsync(Guid id)
+    public async Task<T?> GetByIdAsync(Guid id, CancellationToken cancellationToken)
     {
-        return await _dbSet.FindAsync(id);
+        return await _dbSet.FindAsync(id, cancellationToken);
     }
 
-    public async Task<IEnumerable<T>> GetAllAsync()
+    public async Task<IEnumerable<T>> GetAllAsync(CancellationToken cancellationToken)
     {
-        return await _dbSet.ToListAsync();
+        return await _dbSet.ToListAsync(cancellationToken);
     }
 
-    public async Task AddAsync(T entity)
+    public async Task AddAsync(T entity, CancellationToken cancellationToken)
     {
-        await _dbSet.AddAsync(entity);
-        await _entityContext.SaveChangesAsync();
+        await _dbSet.AddAsync(entity, cancellationToken);
+        await _entityContext.SaveChangesAsync(cancellationToken);
     }
 
     public void Update(T entity)
