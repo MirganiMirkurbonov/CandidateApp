@@ -50,7 +50,7 @@ This project implements a simple API for candidates to submit their forms.
     - Alternatively, you can use the .NET CLI:
       ```sh
       dotnet build
-      dotner ef migrations add 'nameOfMigration'
+      dotner ef migrations add 'nameOfMigration' // only first time runnning
       dotnet run
       ```
 
